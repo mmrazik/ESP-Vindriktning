@@ -5,7 +5,8 @@
 #include <Wire.h>
 #include "esp_http_server.h"
 
-
+//ESP32 Dev Module
+//Flash Frequency: 40Mhz
 
 #define PIN_FAN 12
 #define PIN_LED 25
@@ -33,13 +34,15 @@ float temperature;
 float humidity;
 uint16_t pm2_5;
 
-#define METRIC_PREFIX "livingroom_"
+#define METRIC_PREFIX "office_"
 
 void alert(int id);
 
+String log_message = String("prepareMetricsPage() ") + METRIC_PREFIX;
+
 String prepareMetricsPage()
 {
-  Serial.println("prepareMetricsPage()");
+  Serial.println(log_message);
   String temps = String();
   long rssi = WiFi.RSSI();
 
